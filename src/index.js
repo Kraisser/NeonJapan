@@ -10,6 +10,9 @@ const swiper = new Swiper('.swiperSliderWrapper', {
 	parallax: true,
 	slidesPerView: 1,
 	breakpoints: {
+		900: {
+			slidesPerView: 1.5,
+		},
 		1200: {
 			slidesPerView: 2.5,
 		},
@@ -45,4 +48,4 @@ function setBackground(target, value) {
 	target.style.backgroundImage = value;
 }
 
-// animHeaderColor('.headerWrapper', 4000);
+animHeaderColor('.headerWrapper', 4000);
