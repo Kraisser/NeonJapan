@@ -1,0 +1,117 @@
+@import 'variables';
+@import '../node_modules/swiper/swiper-bundle.min.css';
+
+body {
+	background-color: $main-bg;
+	font-family: 'Noto Sans', sans-serif;
+}
+h1 {
+	font-family: 'Pacifico', cursive;
+}
+
+//Text
+.mainText {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	margin-bottom: 50px;
+}
+.headerWrapper {
+	position: relative;
+	background-image: linear-gradient(179deg, $neon-first, $neon-second);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+
+	h1 {
+		font-size: 72px;
+		line-height: 2em;
+		margin: 0;
+		text-shadow: 0 0 5px rgba(248, 54, 244, 0.2);
+	}
+}
+.textWrapper {
+	max-width: 900px;
+	color: #fff;
+}
+
+// Slider
+.sliderSection {
+	overflow-x: clip;
+	margin-bottom: 20vh;
+}
+.swiperSliderWrapper {
+	height: 100%;
+	overflow: visible;
+	top: 0;
+	user-select: none;
+}
+.swiper-container {
+	will-change: transform;
+	transition: $transition !important;
+}
+
+.swiper-slide-item {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	will-change: transform;
+	position: relative;
+	transition: $fast-transition;
+
+	.image-slide-container {
+		max-height: 600px;
+		padding: 40px 0;
+		margin: 0 60px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		overflow: hidden;
+		z-index: 4;
+		position: relative;
+		transition: $transition;
+	}
+	&.swiper-slide-active .image-slide-container {
+		filter: drop-shadow(0 0 5px $neon-first) drop-shadow(0 0 20px $neon-second);
+	}
+	&.swiper-slide-active .slide-image {
+		filter: blur(0px) grayscale(0%);
+	}
+	.img-bg-neon {
+		transition: $transition;
+		filter: saturate(2) blur(100px);
+		position: absolute;
+		width: 100%;
+		height: 100%;
+	}
+	&.swiper-slide-active .img-bg-neon {
+		filter: saturate(6) blur(100px);
+	}
+	.slide-image {
+		will-change: transform;
+		width: 170%;
+		height: auto;
+		transition: $transition !important;
+		filter: blur(5px) grayscale(50%);
+	}
+}
+
+@media (max-width: 1000px) {
+	.textWrapper {
+		padding: 0 20px;
+	}
+}
+@media (max-width: 500px) {
+	.textWrapper {
+		font-size: 14px;
+	}
+}
+@media (max-width: 700px) {
+	.mainText {
+		margin-bottom: 25px;
+	}
+	.swiper-slide-item .image-slide-container {
+		margin: 0 30px;
+	}
+}
