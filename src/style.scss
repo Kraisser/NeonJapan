@@ -1,6 +1,14 @@
 @import 'variables';
 @import '../node_modules/swiper/swiper-bundle.min.css';
 
+@mixin animate-enter($delay, $duration) {
+	transform: translateX(-50%);
+	opacity: 0;
+	// transition: transform $duration ease-in-out;
+
+	animation: anim-enter $duration ease-in-out $delay forwards;
+}
+
 body {
 	background-color: $main-bg;
 	font-family: 'Noto Sans', sans-serif;
@@ -22,6 +30,7 @@ h1 {
 	position: relative;
 	background-image: linear-gradient(179deg, $neon-first, $neon-second);
 	-webkit-background-clip: text;
+	background-clip: text;
 	-webkit-text-fill-color: transparent;
 
 	h1 {
@@ -34,6 +43,12 @@ h1 {
 .textWrapper {
 	max-width: 900px;
 	color: #fff;
+
+	@for $i from 1 through 5 {
+		p:nth-of-type(#{$i}) {
+			@include animate-enter(0.1s * $i, 1s);
+		}
+	}
 }
 
 // Slider
@@ -80,13 +95,13 @@ h1 {
 	}
 	.img-bg-neon {
 		transition: $transition;
-		filter: saturate(2) blur(100px);
+		filter: saturate(2) blur(40px);
 		position: absolute;
 		width: 100%;
 		height: 100%;
 	}
 	&.swiper-slide-active .img-bg-neon {
-		filter: saturate(6) blur(100px);
+		filter: saturate(6) blur(35px);
 	}
 	.slide-image {
 		will-change: transform;
@@ -113,5 +128,17 @@ h1 {
 	}
 	.swiper-slide-item .image-slide-container {
 		margin: 0 30px;
+	}
+}
+
+// Animation
+@keyframes anim-enter {
+	from {
+		transform: translateX(-50%);
+		opacity: 0;
+	}
+	to {
+		transform: translateX(0%);
+		opacity: 1;
 	}
 }
